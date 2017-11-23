@@ -2,20 +2,35 @@
 
 return [
     'straight'   => [
-        'type'          => 'state_machine',
+        'type'          => 'workfow',
         'marking_store' => [
-            'type' => 'single_state',
+            'type' => 'multiple_state',
+            'arguments' => ['currentPlace']
         ],
-        'supports'      => ['stdClass'],
-        'places'        => ['a', 'b', 'c'],
+        'supports'      => ['App\Compra'],
+        'places'        => [
+            'Edicao',
+            'Confirmado_Estoque',
+            'Pagamento_Aceito',
+            'Empacotado',
+            'Entregue'
+        ],
         'transitions'   => [
-            't1' => [
-                'from' => 'a',
-                'to'   => 'b',
+            'confirmando_estoque' => [
+                'from' => 'Edicao',
+                'to'   => 'Confirmado_Estoque',
             ],
-            't2' => [
-                'from' => 'b',
-                'to'   => 'c',
+            'validando_pagamento' => [
+                'from' => 'Confirmado_Estoque',
+                'to'   => 'Pagamento_Aceito',
+            ],
+            'empacotando' => [
+                'from' => 'Pagamento_Aceito',
+                'to' => 'Empacotado'
+            ],
+            'em_entrega' => [
+                'from' => 'Empacotado',
+                'to' => 'Entregue'
             ]
         ],
     ]
