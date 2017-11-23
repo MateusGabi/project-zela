@@ -3,11 +3,10 @@
 namespace App;
 
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Brexis\LaravelWorkflow\Traits\WorkflowTrait;
 
-class Compra extends Model implements Authenticatable {
+class Compra extends Model {
 
     use Notifiable;
     use WorkflowTrait;
@@ -20,6 +19,10 @@ class Compra extends Model implements Authenticatable {
     protected $hidden = [
         'created_at', 'updated_at',
     ];
+
+    public static function getAll() {
+        return factory(Compra::class, 10)->make();
+    }
 
 }
 
