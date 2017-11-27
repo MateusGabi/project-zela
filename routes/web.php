@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controller\CompraController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,3 +16,5 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/compras', 'CompraController@index');
