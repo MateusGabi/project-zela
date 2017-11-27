@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controller\CompraController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,14 +13,11 @@
 |
 */
 
+Auth::routes();
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/compras', 'CompraController@index');
