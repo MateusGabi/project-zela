@@ -20,7 +20,7 @@ class AddTypeToUsersTable extends Migration
                 'Financeiro',
                 'Entrega',
                 'Admin'
-            ])->default('Admin');
+            ])->default('Cliente');
         });
     }
 
