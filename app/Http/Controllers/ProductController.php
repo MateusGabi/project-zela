@@ -14,7 +14,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return factory(Product::class)->make();
+        return factory(Product::class, 10)->make();
     }
 
     /**
