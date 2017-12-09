@@ -9,11 +9,13 @@
 namespace App\Workflow;
 
 
-class Workflow
+use App\User;
+
+abstract class Workflow
 {
 
-    private static $ENDED_STATUS_VALUE = "FINISHED";
-    private static $STARTED_STATUS_VALUE = "STARTED";
+    public static $ENDED_STATUS_VALUE = "FINISHED";
+    public static $STARTED_STATUS_VALUE = "STARTED";
 
     /**
      * Cada workflow possui uma entidade que devemos registrar seu estado. Ex.: CompraWorkflow temos o compra,
@@ -23,7 +25,7 @@ class Workflow
     protected $artifact;
 
     /**
-     * Tipos de usuários no qual o artifact pode estar presente
+     * Tipos de usuários no qual o artifact pode estar presente.
      * @var array places
      */
     protected $places = [];
@@ -39,6 +41,28 @@ class Workflow
      * @var array transitions
      */
     protected $transitions = [];
+
+    /**
+     * CRUD
+     *
+     * @var array
+     */
+    protected $actions = [
+        'create',
+        'read',
+        'update',
+        'delete'
+    ];
+
+    private function flushTransitions() {
+        $temp = [];
+
+        foreach ($this->transitions as $transition => $value) {
+            array_push($temp, $transition);
+        }
+
+        return $temp;
+    }
 
     protected function getNext($string) {
 
@@ -85,34 +109,45 @@ class Workflow
 
     }
 
-    private function flushTransitions() {
-        $temp = [];
-
-        foreach ($this->transitions as $transition => $value) {
-            array_push($temp, $transition);
-        }
-
-        return $temp;
-    }
-
-    function previous() {
+    public function previous() {
         $oldStatus = $this->artifact->status;
 
-        $new_status = $this->getPrevious($oldStatus);
+        $newStatus = $this->getPrevious($oldStatus);
 
-        $this->artifact->setAttribute("status", $new_status);
+        $this->artifact->setAttribute("status", $newStatus);
+
+        $this->notify($oldStatus, $newStatus, false);
 
         print $this->artifact->status ."<br>";
     }
 
-    function next() {
+    public function next() {
 
         $oldStatus = $this->artifact->status;
 
-        $new_status = $this->getNext($oldStatus);
+        $newStatus = $this->getNext($oldStatus);
 
-        $this->artifact->setAttribute("status", $new_status);
+        $this->artifact->setAttribute("status", $newStatus);
+
+        $this->notify($oldStatus, $newStatus, true);
 
         print $this->artifact->status ."<br>";
     }
+
+    /**
+     * Função Handler que é chamada sempre quando ocorre mudança no estado do Workflow.
+     *
+     * @param $oldStatus
+     * @param $newStatus
+     * @param bool $isNext
+     * @return void
+     */
+    abstract function notify($oldStatus, $newStatus, $isNext = true);
+
+    /**
+     * Função responsável por fazer um filtro por usuário. A função é o ponto de encontro em Workflow$places e
+     * Workflow$actions.
+     * @return boolean
+     */
+    abstract function authorize($action);
 }

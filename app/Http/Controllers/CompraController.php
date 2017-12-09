@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Compra;
 use App\Workflow\CompraWorkflow;
+use App\Workflow\Workflow;
 use Illuminate\Http\Request;
 
 class CompraController extends Controller
@@ -86,21 +87,28 @@ class CompraController extends Controller
 
     public function foo(Compra $compra)
     {
+        $compra = new Compra();
         $compraWorkflow = new CompraWorkflow($compra);
-        $compraWorkflow->next();
-        $compraWorkflow->next();
-        $compraWorkflow->next();
-        $compraWorkflow->next();
-        $compraWorkflow->next();
-        $compraWorkflow->next();
 
-        // go back
+        if ($compraWorkflow->authorize("create")) {
+            $compraWorkflow->next();
+            $compraWorkflow->next();
+            $compraWorkflow->next();
+            $compraWorkflow->next();
+            $compraWorkflow->next();
+            $compraWorkflow->next();
 
-        $compraWorkflow->previous();
-        $compraWorkflow->previous();
-        $compraWorkflow->previous();
-        $compraWorkflow->previous();
-        $compraWorkflow->previous();
-        $compraWorkflow->previous();
+            // go back
+
+            $compraWorkflow->previous();
+            $compraWorkflow->previous();
+            $compraWorkflow->previous();
+            $compraWorkflow->previous();
+            $compraWorkflow->previous();
+            $compraWorkflow->previous();
+        }
+        else {
+            print "Você não possui autorização para essa ação.";
+        }
     }
 }
