@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Compra;
+use App\Workflow\CompraWorkflow;
 use Illuminate\Http\Request;
 
 class CompraController extends Controller
@@ -14,7 +15,7 @@ class CompraController extends Controller
      */
     public function index()
     {
-        return Compra::getAll();
+        //
     }
 
     /**
@@ -81,5 +82,25 @@ class CompraController extends Controller
     public function destroy(Compra $compra)
     {
         //
+    }
+
+    public function foo(Compra $compra)
+    {
+        $compraWorkflow = new CompraWorkflow($compra);
+        $compraWorkflow->next();
+        $compraWorkflow->next();
+        $compraWorkflow->next();
+        $compraWorkflow->next();
+        $compraWorkflow->next();
+        $compraWorkflow->next();
+
+        // go back
+
+        $compraWorkflow->previous();
+        $compraWorkflow->previous();
+        $compraWorkflow->previous();
+        $compraWorkflow->previous();
+        $compraWorkflow->previous();
+        $compraWorkflow->previous();
     }
 }
