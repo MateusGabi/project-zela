@@ -27,3 +27,5 @@ Route::get('/purchase/foo/{id}', 'PurchaseController@foo');
 
 // Product -> Produto
 Route::get('/product', 'ProductController@index')->name('product.index');
+
+Route::get('/api/v1/product', 'ProductController@apiGetAll')->name('api.product.index');

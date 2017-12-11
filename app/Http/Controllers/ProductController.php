@@ -20,7 +20,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('product.index', factory(Product::class, 10)->make());
+        return view('product.index');
     }
 
     /**
@@ -87,5 +87,12 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         //
+    }
+
+    /**
+     * @return mixed
+     */
+    public function apiGetAll() {
+        return factory(Product::class, 10)->make();
     }
 }
