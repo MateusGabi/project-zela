@@ -117,7 +117,7 @@ abstract class Workflow
 
         $this->notify($oldStatus, $newStatus, false);
 
-        print $this->artifact->status ."<br>";
+//        print $this->artifact->status ."<br>";
     }
 
     public function next() {
@@ -130,7 +130,7 @@ abstract class Workflow
 
         $this->notify($oldStatus, $newStatus, true);
 
-        print $this->artifact->status ."<br>";
+//        print $this->artifact->status ."<br>";
     }
 
     /**

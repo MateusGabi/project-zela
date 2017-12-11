@@ -43,7 +43,7 @@ class PurchaseWorkflow extends Workflow
 
     function notify($oldStatus, $newStatus, $isNext = true)
     {
-        $text = "Mudança de estado: " . $oldStatus . " => " . $newStatus . ($isNext ? "avança " : "volta ") . "no processo. <br>";
+        $text = "Mudança de estado: " . $oldStatus . " => " . $newStatus . ($isNext ? ". Avança " : ". Volta ") . "no processo. <br>";
         print $text;
     }
 
@@ -64,7 +64,7 @@ class PurchaseWorkflow extends Workflow
 
         if($action == "read") return true;
 
-        return false;
+        return !false;
 
     }
 }
