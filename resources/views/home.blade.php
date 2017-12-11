@@ -15,9 +15,12 @@
                     @endif
 
                     You are logged in!
+
                 </div>
             </div>
         </div>
+
+        <Example></Example>
     </div>
 </div>
 @endsection
