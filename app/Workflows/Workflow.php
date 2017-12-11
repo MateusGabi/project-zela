@@ -8,7 +8,6 @@
 
 namespace App\Workflow;
 
-
 use App\User;
 
 abstract class Workflow

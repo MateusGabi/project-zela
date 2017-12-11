@@ -2,7 +2,6 @@
 
 namespace App\Workflow;
 
-
 use App\Compra;
 use App\User;
 
@@ -62,6 +61,8 @@ class CompraWorkflow extends Workflow
         if($user_role == "Admin") return true;
 
         if($user_role == "Cliente" && $action == "update") return true;
+
+        if($action == "read") return true;
 
         return false;
 
