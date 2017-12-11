@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +20,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return factory(Product::class, 10)->make();
+        return view('product.index', factory(Product::class, 10)->make());
     }
 
     /**

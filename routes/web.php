@@ -20,6 +20,10 @@ Route::get('/', function () {
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/compra', 'CompraController@index');
-Route::get('/compra/foo/{id}', 'CompraController@foo');
-Route::get('/product', 'ProductController@index')->name('product');
+
+// Purchase -> Compra
+Route::get('/purchase', 'CompraController@index')->name('purchase.index');
+Route::get('/purchase/foo/{id}', 'CompraController@foo');
+
+// Product -> Produto
+Route::get('/product', 'ProductController@index')->name('product.index');
