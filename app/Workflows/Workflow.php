@@ -17,7 +17,7 @@ abstract class Workflow
     public static $STARTED_STATUS_VALUE = "STARTED";
 
     /**
-     * Cada workflow possui uma entidade que devemos registrar seu estado. Ex.: CompraWorkflow temos o compra,
+     * Cada workflow possui uma entidade que devemos registrar seu estado. Ex.: PurchaseWorkflow temos o compra,
      * EditalWorkflow temos edital
      * @var \Object artifact
      */

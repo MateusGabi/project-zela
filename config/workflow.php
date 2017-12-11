@@ -7,7 +7,7 @@ return [
             'type' => 'multiple_state',
             'arguments' => ['currentPlace']
         ],
-        'supports'      => ['App\Compra'],
+        'supports'      => ['App\Purchase'],
         'places'        => [
             'Edicao',
             'Confirmado_Estoque',

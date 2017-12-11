@@ -7,7 +7,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model;
 use Brexis\LaravelWorkflow\Traits\WorkflowTrait;
 
-class Compra extends Model {
+class Purchase extends Model {
 
     use Notifiable;
     use WorkflowTrait;
@@ -28,7 +28,7 @@ class Compra extends Model {
     ];
 
     public static function getAll() {
-        return factory(Compra::class, 10)->make();
+        return factory(Purchase::class, 10)->make();
     }
 
 }

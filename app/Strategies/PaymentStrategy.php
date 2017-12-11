@@ -9,10 +9,10 @@
 namespace App\Strategies;
 
 
-use App\Compra;
+use App\Purchase;
 use App\User;
 
 abstract class PaymentStrategy implements Strategy
 {
-    abstract function pay(User $user, Compra $compra);
+    abstract function pay(User $user, Purchase $compra);
 }

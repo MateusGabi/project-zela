@@ -8,13 +8,13 @@
 
 namespace App\Strategies;
 
-use App\Compra;
+use App\Purchase;
 use App\User;
 
 class CreditCardPaymentStrategy extends PaymentStrategy
 {
 
-    function pay(User $user, Compra $compra)
+    function pay(User $user, Purchase $compra)
     {
         // TODO: Implement pay() method.
     }

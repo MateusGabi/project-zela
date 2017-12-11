@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Compra;
-use App\Workflow\CompraWorkflow;
+use App\Purchase;
+use App\Workflow\PurchaseWorkflow;
 use App\Workflow\Workflow;
 use Illuminate\Http\Request;
 
-class CompraController extends Controller
+class PurchaseController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -43,10 +43,10 @@ class CompraController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Compra  $compra
+     * @param  \App\Purchase  $compra
      * @return \Illuminate\Http\Response
      */
-    public function show(Compra $compra)
+    public function show(Purchase $compra)
     {
         //
     }
@@ -54,10 +54,10 @@ class CompraController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Compra  $compra
+     * @param  \App\Purchase  $compra
      * @return \Illuminate\Http\Response
      */
-    public function edit(Compra $compra)
+    public function edit(Purchase $compra)
     {
         //
     }
@@ -66,10 +66,10 @@ class CompraController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Compra  $compra
+     * @param  \App\Purchase  $compra
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Compra $compra)
+    public function update(Request $request, Purchase $compra)
     {
         //
     }
@@ -77,18 +77,18 @@ class CompraController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Compra  $compra
+     * @param  \App\Purchase  $compra
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Compra $compra)
+    public function destroy(Purchase $compra)
     {
         //
     }
 
-    public function foo(Compra $compra)
+    public function foo(Purchase $compra)
     {
-        $compra = new Compra();
-        $compraWorkflow = new CompraWorkflow($compra);
+        $compra = new Purchase();
+        $compraWorkflow = new PurchaseWorkflow($compra);
 
         if ($compraWorkflow->authorize("create")) {
             $compraWorkflow->next();

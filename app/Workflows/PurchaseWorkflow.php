@@ -2,10 +2,10 @@
 
 namespace App\Workflow;
 
-use App\Compra;
+use App\Purchase;
 use App\User;
 
-class CompraWorkflow extends Workflow
+class PurchaseWorkflow extends Workflow
 {
     protected $artifact;
 
@@ -36,7 +36,7 @@ class CompraWorkflow extends Workflow
         ]
     ];
 
-    function __construct(Compra $compra)
+    function __construct(Purchase $compra)
     {
         $this->artifact = $compra;
     }

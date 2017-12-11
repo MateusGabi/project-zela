@@ -21,9 +21,9 @@ Route::get('/', function () {
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-// Purchase -> Compra
-Route::get('/purchase', 'CompraController@index')->name('purchase.index');
-Route::get('/purchase/foo/{id}', 'CompraController@foo');
+// Purchase -> Purchase
+Route::get('/purchase', 'PurchaseController@index')->name('purchase.index');
+Route::get('/purchase/foo/{id}', 'PurchaseController@foo');
 
 // Product -> Produto
 Route::get('/product', 'ProductController@index')->name('product.index');

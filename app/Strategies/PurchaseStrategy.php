@@ -9,7 +9,7 @@
 namespace App\Strategies;
 
 
-class CompraStrategy implements Strategy
+class PurchaseStrategy implements Strategy
 {
     private $workflow;
 }
